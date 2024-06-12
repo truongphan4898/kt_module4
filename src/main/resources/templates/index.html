@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh sách giao dịch</title>
+</head>
+<body>
+<h1>Danh sách giao dịch</h1>
+<form action="/" method="get">
+    <input type="text" name="query" placeholder="Tìm kiếm theo tên hoặc loại dịch vụ">
+    <input type="submit" value="Tìm kiếm">
+</form>
+<table border="1">
+    <tr>
+        <th>Mã giao dịch</th>
+        <th>Tên khách hàng</th>
+        <th>Loại dịch vụ</th>
+        <th>Ngày giao dịch</th>
+        <th>Đơn giá (VND/m2)</th>
+        <th>Diện tích (m2)</th>
+        <th>Hành động</th>
+    </tr>
+    <tr th:each="transaction : ${transactions}">
+        <td th:text="${transaction.maGiaoDich}"></td>
+        <td th:text="${transaction.khachHang.tenKhachHang}"></td>
+        <td th:text="${transaction.loaiDichVu}"></td>
+        <td th:text="${transaction.ngayGiaoDich}"></td>
+        <td th:text="${transaction.donGia}"></td>
+        <td th:text="${transaction.dienTich}"></td>
+        <td>
+            <a th:href="@{/transaction/{id}(id=${transaction.maGiaoDich})}">Chi tiết</a>
+        </td>
+        <td>
+            <a th:href="@{/delete_transaction/{id}(id=${transaction.maGiaoDich})}" onclick="return confirm('Bạn có chắc muốn xoá giao dịch này không?')">Xoá</a>
+        </td>
+    </tr>
+</table>
+<a href="/add_transaction">Thêm mới</a>
+</body>
+
+</html>

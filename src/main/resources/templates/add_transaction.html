@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Thêm giao dịch mới</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+<h1>Thêm giao dịch mới</h1>
+<form action="/add_transaction" method="post">
+    <label for="ma_khach_hang">Mã khách hàng:</label>
+    <select name="khachHang.maKhachHang">
+        <option th:each="customer : ${customers}" th:value="${customer.maKhachHang}" th:text="${customer.tenKhachHang}"></option>
+    </select>
+    <br>
+    <label for="ngayGiaoDich">Ngày giao dịch:</label>
+    <input type="text" id="ngayGiaoDich" name="ngayGiaoDich">
+    <br>
+    <label for="loaiDichVu">Loại dịch vụ:</label>
+    <select id="loaiDichVu" name="loaiDichVu">
+        <option value="Nhà">Nhà</option>
+        <option value="Nhà đất">Nhà Đất</option>
+    </select>
+    <br>
+    <label for="donGia">Đơn giá (VND/m2):</label>
+    <input type="text" id="donGia" name="donGia">
+    <br>
+    <label for="dienTich">Diện tích (m2):</label>
+    <input type="text" id="dienTich" name="dienTich">
+    <br>
+    <input type="submit" value="Thêm">
+</form>
+<a href="/">Quay lại danh sách giao dịch</a>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr("#ngayGiaoDich", {
+            dateFormat: "d-m-Y",
+            enableTime: false,
+        });
+    });
+</script>
+</html>

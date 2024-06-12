@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chi tiết giao dịch</title>
+</head>
+<body>
+<h1>Chi tiết giao dịch</h1>
+<p>Mã giao dịch: <span th:text="${transaction.maGiaoDich}"></span></p>
+<p>Tên khách hàng: <span th:text="${transaction.khachHang.tenKhachHang}"></span></p>
+<p>Ngày giao dịch: <span th:text="${transaction.ngayGiaoDich}"></span></p>
+<p>Loại dịch vụ: <span th:text="${transaction.loaiDichVu}"></span></p>
+<p>Đơn giá: <span th:text="${transaction.donGia}"></span></p>
+<p>Diện tích: <span th:text="${transaction.dienTich}"></span></p>
+<a href="/">Quay lại danh sách giao dịch</a>
+</body>
+</html>
